@@ -69,10 +69,11 @@ def task_create(request):
 
     if serializer.is_valid():
         serializer.save()
+    print(serializer)
     return Response(serializer.data)
 
 
-@api_view(['POST'])
+@api_view(['PUT'])
 def task_update(request, pk):
     task = SFTask.objects.get(id=pk)
     serializer = SFTaskSerializer(instance=task, data=request.data)

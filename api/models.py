@@ -3,20 +3,20 @@ from django.db import models
 
 # Create your models here.
 class SFTask(models.Model):
-    task_type = models.IntegerField(null=True)
+    #task_type = models.IntegerField(null=True)
     title = models.CharField(max_length=200)
     contents = models.CharField(max_length=500)
     created_date = models.DateTimeField(auto_now_add = True, blank = True)
-    timestamp = models.DateTimeField(auto_now = True, blank = True)
-    completed = models.BooleanField(default = False, blank = True)
-    completed_date = models.DateTimeField(auto_now_add = True, blank = True)
+    #timestamp = models.DateTimeField(auto_now = True, blank = True)
+    #completed = models.BooleanField(default = False, blank = True)
+    completed_date = models.DateTimeField(null = True, blank = True)
     due_date = models.DateTimeField()
-    creator = models.IntegerField(null=True)
-    assignee = models.IntegerField(null=True)
-    priority = models.IntegerField(null=True)
+    creator = models.CharField(null=True, max_length=20)
+    assignee = models.CharField(null=True, max_length=20)
+    priority = models.CharField(max_length=10, null=True)
 
     def __str__(self):
-        return '{0} {1} {2} {3} {4}'.format(self.title, self.completed, self.timestamp, self.completed_date,
+        return '{0} {1} {2} {3} {4}'.format(self.title, self.contents, self.created_date, self.completed_date,
                                             self.creator)
 
 
@@ -55,7 +55,7 @@ class SFOutward(models.Model):
     freight_company = models.CharField(max_length=30)
     booked_date = models.DateTimeField(null=True, blank=True)
     dispatched_date = models.DateTimeField(null=True, blank=True)
-    person_booked = models.CharField(max_length=20)
+    person_booked = models.CharField(max_length=20, null=True, blank=True)
     person_dispatched = models.CharField(max_length=20, null=True, blank=True)
     memo = models.TextField(blank=True)
 
