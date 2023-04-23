@@ -51,7 +51,7 @@ def api_overview(request):
 
 @api_view(['GET'])
 def task_list(request):
-    tasks = SFTask.objects.all()
+    tasks = SFTask.objects.all().order_by('due_date', 'priority').values()
     serializer = SFTaskSerializer(tasks, many=True)
     return Response(serializer.data)
 
