@@ -18,7 +18,7 @@ from .serializers import SFTaskSerializer, SFOutwardSerializer, SFInwardSerializ
 
 from .models import SFTask, SFOutward, SFInward
 
-#from django.contrib.auth.models import User
+#from django.contrib.auth.models import User, Group
 
 '''
 --------------------------------------------------------------------------------------------------------------
@@ -109,7 +109,11 @@ def login(request):
     if not user:
         return Response({'error': 'Invalid Credentials'}, status=HTTP_404_NOT_FOUND)
     token, _ = Token.objects.get_or_create(user=user)
-    return Response({'token': token.key}, status=HTTP_200_OK)
+    group = ''
+    for g in user.groups.all():
+        group = g.name  # retrieve group name of user
+
+    return Response({'token': token.key, 'group': group}, status=HTTP_200_OK)
 
 
 '''
