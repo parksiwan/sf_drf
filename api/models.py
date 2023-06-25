@@ -15,6 +15,10 @@ class SFTask(models.Model):
     assignee = models.CharField(null=True, max_length=20)
     priority = models.CharField(max_length=10, null=True)
 
+    class Meta:
+        verbose_name = "Remark"
+        verbose_name_plural = "Remarks"
+
     def __str__(self):
         return '{0} {1} {2} {3} {4}'.format(self.title, self.contents, self.created_date, self.completed_date,
                                             self.creator)
@@ -40,6 +44,12 @@ class SFInward(models.Model):
     person_received = models.CharField(max_length=20, blank=True)
     product_owner = models.CharField(max_length=50, null=True)
     memo = models.TextField(blank=True)
+    location = models.CharField(max_length=50, null=True, blank=True)  # 25/06/23
+
+    class Meta:
+        verbose_name = "Inward Delivery"
+        verbose_name_plural = "Inward Delivery"
+	
 
     def __str__(self):
         return '{0} {1} {2} {3} {4}'.format(self.created_date, self.supplier, self.products, self.eta,
@@ -58,6 +68,10 @@ class SFOutward(models.Model):
     person_booked = models.CharField(max_length=20, null=True, blank=True)
     person_dispatched = models.CharField(max_length=20, null=True, blank=True)
     memo = models.TextField(blank=True)
+    
+    class Meta:
+        verbose_name = "Outward Dispatch"
+        verbose_name_plural = "Outward Dispatch"
 
     def __str__(self):
         return '{0} {1} {2} {3} {4}'.format(self.created_date, self.customer, self.product_type, self.etd,
