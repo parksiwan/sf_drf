@@ -9,9 +9,10 @@ from import_export.admin import ImportExportModelAdmin
 
 @admin.register(SFInward)
 class ViewAdmin(ImportExportModelAdmin):
-    list_display = ['eta_date_only', 'supplier', 'products', 'person_ordered', 'created_date', 'person_received', 'received_date', 'product_owner', 'location']
-    search_fields = ['supplier', 'products', 'product_owner']
+    list_display = ['eta_date_only', 'supplier', 'product_code', 'products', 'person_ordered', 'created_date', 'person_received', 'received_date', 'product_owner', 'location']
+    search_fields = ['supplier', 'product_code', 'products', 'product_owner']
     filter_horizontal = ()
+    list_filter = ['supplier', 'product_code', 'products', 'product_owner']
     date_hierarchy = 'eta'
     fieldsets = ()
 
@@ -26,6 +27,7 @@ class ViewAdmin(ImportExportModelAdmin):
     list_display = ['etd_date_only', 'customer', 'product_type', 'pallet_space', 'freight_company', 'created_date', 'person_booked', 'dispatched_date', 'person_dispatched']
     search_fields = ['customer', 'freight_company']
     filter_horizontal = ()
+    list_filter = ['customer', 'freight_company']
     date_hierarchy = 'etd'
     fieldsets = ()
 

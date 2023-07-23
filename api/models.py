@@ -12,7 +12,7 @@ class SFTask(models.Model):
     completed_date = models.DateTimeField(null = True, blank = True)
     due_date = models.DateTimeField()
     creator = models.CharField(null=True, max_length=20)
-    assignee = models.CharField(null=True, max_length=20)
+    assignee = models.CharField(null=True, max_length=200)
     priority = models.CharField(max_length=10, null=True)
 
     class Meta:
@@ -37,7 +37,10 @@ class SFComments(models.Model):
 class SFInward(models.Model):
     created_date = models.DateTimeField(auto_now_add = True, blank = True)
     supplier = models.CharField(max_length=30)
+    product_code = models.CharField(max_length=20, null=True, blank=True)
     products = models.TextField()
+    qty = models.FloatField(null=True)  # 30/06/23
+    unit = models.CharField(max_length=20, null=True)  # 30/06/23
     eta = models.DateTimeField()
     received_date = models.DateTimeField(null=True, blank=True)
     person_ordered = models.CharField(max_length=20)
