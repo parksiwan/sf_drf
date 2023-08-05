@@ -64,6 +64,7 @@ class SFOutward(models.Model):
     customer = models.CharField(max_length=30)
     product_type = models.CharField(max_length=10)
     pallet_space = models.CharField(max_length=30, null=True)
+    outward_type = models.CharField(max_length=20, null=True)
     etd = models.DateTimeField()
     freight_company = models.CharField(max_length=30)
     booked_date = models.DateTimeField(null=True, blank=True)

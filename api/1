@@ -27,7 +27,7 @@ class ViewAdmin(ImportExportModelAdmin):
     list_display = ['etd_date_only', 'customer', 'product_type', 'outward_type', 'pallet_space', 'freight_company', 'created_date', 'person_booked', 'dispatched_date', 'person_dispatched']
     search_fields = ['customer', 'freight_company', 'outward_type']
     filter_horizontal = ()
-    list_filter = ['customer', 'freight_company', 'outward_type']
+    list_filter = ['customer', 'freight_company']
     date_hierarchy = 'etd'
     fieldsets = ()
 
